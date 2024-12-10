@@ -1,0 +1,114 @@
+@font-face {
+    font-family: 'Satoshi Variable';
+    src: url('./Satoshi/Satoshi-Variable.woff2') format('woff2');
+    font-weight: 100 900;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Pretendard';
+    src: url('./Pretendard/Pretendard-Thin.woff2') format('woff2');
+    font-weight: 100;
+    font-style: normal;
+
+    unicode-range:
+        U+AC00-D7AF,
+        /* Hangul Syllables */ U+1100-11FF,
+        /* Hangul Jamo */ U+3130-318F; /* Hangul Compatibility Jamo */
+}
+
+@font-face {
+    font-family: 'Pretendard';
+    src: url('./Pretendard/Pretendard-ExtraLight.woff2') format('woff2');
+    font-weight: 200;
+    font-style: normal;
+
+    unicode-range:
+        U+AC00-D7AF,
+        /* Hangul Syllables */ U+1100-11FF,
+        /* Hangul Jamo */ U+3130-318F; /* Hangul Compatibility Jamo */
+}
+
+@font-face {
+    font-family: 'Pretendard';
+    src: url('./Pretendard/Pretendard-Light.woff2') format('woff2');
+    font-weight: 300;
+    font-style: normal;
+
+    unicode-range:
+        U+AC00-D7AF,
+        /* Hangul Syllables */ U+1100-11FF,
+        /* Hangul Jamo */ U+3130-318F; /* Hangul Compatibility Jamo */
+}
+
+@font-face {
+    font-family: 'Pretendard';
+    src: url('./Pretendard/Pretendard-Regular.woff2') format('woff2');
+    font-weight: 400;
+    font-style: normal;
+
+    unicode-range:
+        U+AC00-D7AF,
+        /* Hangul Syllables */ U+1100-11FF,
+        /* Hangul Jamo */ U+3130-318F; /* Hangul Compatibility Jamo */
+}
+
+@font-face {
+    font-family: 'Pretendard';
+    src: url('./Pretendard/Pretendard-Medium.woff2') format('woff2');
+    font-weight: 500;
+    font-style: normal;
+
+    unicode-range:
+        U+AC00-D7AF,
+        /* Hangul Syllables */ U+1100-11FF,
+        /* Hangul Jamo */ U+3130-318F; /* Hangul Compatibility Jamo */
+}
+
+@font-face {
+    font-family: 'Pretendard';
+    src: url('./Pretendard/Pretendard-SemiBold.woff2') format('woff2');
+    font-weight: 600;
+    font-style: normal;
+
+    unicode-range:
+        U+AC00-D7AF,
+        /* Hangul Syllables */ U+1100-11FF,
+        /* Hangul Jamo */ U+3130-318F; /* Hangul Compatibility Jamo */
+}
+
+@font-face {
+    font-family: 'Pretendard';
+    src: url('./Pretendard/Pretendard-Bold.woff2') format('woff2');
+    font-weight: 700;
+    font-style: normal;
+
+    unicode-range:
+        U+AC00-D7AF,
+        /* Hangul Syllables */ U+1100-11FF,
+        /* Hangul Jamo */ U+3130-318F; /* Hangul Compatibility Jamo */
+}
+
+@font-face {
+    font-family: 'Pretendard';
+    src: url('./Pretendard/Pretendard-ExtraBold.woff2') format('woff2');
+    font-weight: 800;
+    font-style: normal;
+
+    unicode-range:
+        U+AC00-D7AF,
+        /* Hangul Syllables */ U+1100-11FF,
+        /* Hangul Jamo */ U+3130-318F; /* Hangul Compatibility Jamo */
+}
+
+@font-face {
+    font-family: 'Pretendard';
+    src: url('./Pretendard/Pretendard-Black.woff2') format('woff2');
+    font-weight: 900;
+    font-style: normal;
+
+    unicode-range:
+        U+AC00-D7AF,
+        /* Hangul Syllables */ U+1100-11FF,
+        /* Hangul Jamo */ U+3130-318F; /* Hangul Compatibility Jamo */
+}
