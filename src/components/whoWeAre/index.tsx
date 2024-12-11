@@ -114,11 +114,11 @@ const SectionMoveBtn = styled(ButtonBase)`
     }
 
     &:hover {
-        background: #e2dedf;
+        background: ${Colors.gray[500]};
     }
 
     &:active {
-        background: #bab6b7;
+        background: ${Colors.gray[400]};
     }
 `;
 

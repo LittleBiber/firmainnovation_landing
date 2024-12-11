@@ -3,10 +3,11 @@ import styled from 'styled-components';
 import { LeftArrowLong } from '../../constant/svgImages';
 import { useGlobalContext } from '../../context/globalContext';
 import { IUserCaseTyp2Section, Type2UseCase } from '../../i18n';
+import Colors from '../../theme/color';
 import { ContentBox, PointBox } from './style';
 
 const SectionTitle = styled.div`
-    color: var(--Orange-300, #faac7a);
+    color: ${Colors.priamry[3]};
     text-align: center;
 
     /* KR/Body/K) Body2 - Md */
@@ -26,10 +27,10 @@ const ExampleBox = styled.div`
     align-items: center;
 
     border-radius: 40px;
-    border: 1px solid var(--Orange-300, #faac7a);
+    border: 1px solid ${Colors.priamry[3]};
 
     .typo {
-        color: var(--Gray-600, #f4f0f1);
+        color: ${Colors.gray[600]};
         text-align: center;
 
         /* KR/Body/K) Body2 - Rg */

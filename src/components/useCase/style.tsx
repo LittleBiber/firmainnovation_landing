@@ -1,6 +1,7 @@
 import styled from 'styled-components';
 
 import Colors from '../../theme/color';
+import { hexToRGBA } from '../../util';
 
 export interface IUseCaseTpy1 {
     index: number;
@@ -13,8 +14,8 @@ export const ContentBox = styled.div<{ $lang: string }>`
     max-width: 1200px;
     width: 100%;
 
-    border-radius: 16px;
-    background: rgba(117, 112, 114, 0.05);
+    border-radius: 24px; // 16px; // change by request
+    background: ${hexToRGBA(Colors.gray[200], 0.15)}; // rgba(117, 112, 114, 0.05); // change by request
     backdrop-filter: blur(1px);
 
     padding: 64px 40px;
@@ -80,7 +81,7 @@ export const PointBox = styled.div<{ $lang: string }>`
         height: 100%;
 
         border-radius: 80px;
-        background: linear-gradient(93deg, #cf3919 -0.59%, #f68a58 150.18%); //${Colors.priamry[5]};
+        background: linear-gradient(93deg, ${Colors.priamry[6]} -0.59%, ${Colors.priamry[4]} 150.18%); //${Colors.priamry[5]};
         box-shadow: 0px 4px 32px 0px rgba(71, 33, 21, 0.4);
 
         display: flex;

@@ -74,21 +74,20 @@ const OpenRolesBtn = styled(ButtonBase)<{ $lang: string }>`
 
     cursor: pointer;
 
+    transition: all 0.2s;
+
     .title {
         color: var(--Gray-900, #fff);
-        // font-family: Pretendard;
         font-size: 20px;
         font-weight: ${({ $lang }) => ($lang === 'ko' ? 700 : 800)};
     }
 
-    transition: background 0.2s;
-
     &:hover {
-        background: linear-gradient(0deg, rgba(0, 0, 0, 0.05) 0%, rgba(0, 0, 0, 0.05) 100%), #f15623;
+        background: linear-gradient(0deg, rgba(0, 0, 0, 0.05) 0%, rgba(0, 0, 0, 0.05) 100%), ${Colors.priamry[5]};
     }
 
     &:active {
-        background: linear-gradient(0deg, rgba(0, 0, 0, 0.1) 0%, rgba(0, 0, 0, 0.1) 100%), #f15623;
+        background: linear-gradient(0deg, rgba(0, 0, 0, 0.1) 0%, rgba(0, 0, 0, 0.1) 100%), ${Colors.priamry[5]};
     }
 `;
 

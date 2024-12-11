@@ -51,16 +51,21 @@ const ContentBox = styled(BoxBase)`
 
         border: 1px solid transparent; // create border for 1px (maybe 0.1rem)
         background:
-            linear-gradient(180deg, #231f20 -6.94%, #262626 28.89%),
-            linear-gradient(180deg, ${hexToRGBA('#383737', 0.2)} 10%, ${hexToRGBA('#9E9A9B', 0.2)}) 100%;
+            linear-gradient(180deg, ${Colors.gray[100]} -6.94%, #262626 28.89%),
+            linear-gradient(180deg, ${hexToRGBA('#383737', 0.2)} 10%, ${hexToRGBA(Colors.gray[300], 0.2)}) 100%;
         background-origin: border-box; // include borderline space in background
         background-clip: content-box, border-box; // use first color to content-box, second color to border-box
     }
 
     &:hover&::before {
         border: 1px solid transparent; // create border for 1px (maybe 0.1rem)
-        background: linear-gradient(#231f20, #231f20),
-            linear-gradient(65deg, ${hexToRGBA('#F68A58', 0.4)} 40%, ${hexToRGBA('#73060A', 0.7)} 60%, ${hexToRGBA('#73060A', 1)} 100%);
+        background: linear-gradient(${Colors.gray[100]}, ${Colors.gray[100]}),
+            linear-gradient(
+                65deg,
+                ${hexToRGBA(Colors.priamry[4], 0.4)} 40%,
+                ${hexToRGBA(Colors.priamry[9], 0.7)} 60%,
+                ${hexToRGBA(Colors.priamry[9], 1)} 100%
+            );
         background-origin: border-box; // include borderline space in background
         background-clip: content-box, border-box; // use first color to content-box, second color to border-box
     }

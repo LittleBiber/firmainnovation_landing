@@ -59,29 +59,31 @@ const RouteButton = styled(ButtonBase)`
 
     text-transform: uppercase;
 
+    transition: color 0.2s;
+
     svg {
         transition:
             fill 0.2s,
             stroke 0.2s;
-        fill: #ffffff;
-        stroke: #ffffff;
+        fill: ${Colors.white};
+        stroke: ${Colors.white};
     }
 
     &:hover {
-        color: #f15623;
+        color: ${Colors.priamry[5]};
 
         svg {
-            fill: #f15623;
-            stroke: #f15623;
+            fill: ${Colors.priamry[5]};
+            stroke: ${Colors.priamry[5]};
         }
     }
 
     &:active {
-        color: #f15623;
+        color: ${Colors.priamry[5]};
 
         svg {
-            fill: #f15623;
-            stroke: #f15623;
+            fill: ${Colors.priamry[5]};
+            stroke: ${Colors.priamry[5]};
         }
     }
 `;

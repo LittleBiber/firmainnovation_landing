@@ -41,9 +41,13 @@ const ContentBox = styled.div<{ $variant: 'as-is' | 'to-be' }>`
 
         border: 1px solid transparent; // create border for 1px (maybe 0.1rem)
         background:
-            linear-gradient(#231f20, #231f20),
+            linear-gradient(${Colors.gray[100]}, ${Colors.gray[100]}),
             // select filling color (same with background)
-            linear-gradient(10deg, ${hexToRGBA('#f68a58', 0.8)}, ${hexToRGBA('#564c48', 0.8)}); // select border gradient color LOL
+            linear-gradient(
+                    10deg,
+                    ${hexToRGBA(Colors.priamry[4], 0.8)},
+                    ${hexToRGBA('#564c48', 0.8)}
+                ); // select border gradient as linear-gradient
         background-origin: border-box; // include borderline space in background
         background-clip: content-box, border-box; // use first color to content-box, second color to border-box
     }

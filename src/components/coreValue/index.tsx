@@ -55,7 +55,7 @@ const Card = styled.div<{ $lang: string }>`
 
     &::before {
         box-sizing: border-box;
-        border-radius: 16px; // for gradient border
+        border-radius: 12px; // 16px; // change by request
         content: '';
         position: absolute;
         left: 0;
@@ -66,15 +66,15 @@ const Card = styled.div<{ $lang: string }>`
 
         border: 1px solid transparent; // create border for 1px (maybe 0.1rem)
         background:
-            linear-gradient(#231f20, #231f20),
+            linear-gradient(${Colors.gray[100]}, ${Colors.gray[100]}),
             // select filling color (same with background)
-            linear-gradient(165deg, #f68a58, #231f20); // select border gradient color LOL
+            linear-gradient(165deg, ${Colors.priamry[4]}, ${Colors.gray[100]}); // select border gradient as linear-gradient
         background-origin: border-box; // include borderline space in background
         background-clip: content-box, border-box; // use first color to content-box, second color to border-box
     }
 
     .title {
-        color: var(--Orange-400, #f68a58);
+        color: ${Colors.priamry[4]};
 
         font-size: 18px;
         font-style: normal;
