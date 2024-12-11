@@ -3,29 +3,38 @@ import { useTranslation } from 'react-i18next';
 import styled from 'styled-components';
 
 import { WHO_WE_ARE_HREF } from '../../constant';
-import { LeftArrowLong } from '../../constant/svgImages';
+import pngImages from '../../constant/pngImages';
+import { BigArrowRight, LeftArrowLong } from '../../constant/svgImages';
 import { useGlobalContext } from '../../context/globalContext';
 import Colors from '../../theme/color';
+import { hexToRGBA } from '../../util';
 import ButtonBase from '../button';
 import { SectionTitle } from '../common';
 
 const IntroBox = styled.div`
+    position: relative;
+
     display: flex;
     width: 100vw;
-    height: 800px;
+    height: 100vh;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    gap: 40px;
+    gap: 48px;
 
-    background: ${Colors.black};
+    background: url(${pngImages.main});
+    background-size: cover;
+    background-position: center center;
+
+    background-repeat: no-repeat; /* 이미지 반복 방지 */
+    background-position: center center; /* 중앙 정렬 */
 `;
 
 const TitleBox = styled.div`
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 16px;
+    gap: 12px;
 `;
 
 const DetailBox = styled.div`
@@ -49,6 +58,8 @@ const DetailBox = styled.div`
     background-size: cover;
     background-repeat: no-repeat; /* 이미지 반복 방지 */
     background-position: center center; /* 중앙 정렬 */
+
+    scroll-margin-top: calc(100vh / 4);
 `;
 
 const DetailSectionSubTitle = styled.div`
@@ -80,10 +91,17 @@ const Title = styled.div`
 
     /* EN/Title/E) T1 */
     // font-family: 'Satoshi Variable';
-    font-size: 48px;
+    font-size: 64px;
     font-weight: 900;
 
     text-align: center;
+
+    .accent {
+        background: linear-gradient(90deg, #f15623 0%, #cf3919 100%);
+        background-clip: text;
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+    }
 `;
 
 const SubTitle = styled.div`
@@ -95,30 +113,82 @@ const SubTitle = styled.div`
 `;
 
 const SectionMoveBtn = styled(ButtonBase)`
+    position: relative;
+
     display: flex;
-    height: 64px;
+    height: 55px;
     padding: 14px 32px;
     justify-content: center;
     align-items: center;
     gap: 16px;
 
-    border-radius: 80px;
-    background: var(--Gray-900, #fff);
-
-    transition: background 0.2s;
+    transition: all 0.2s;
 
     .typo {
-        color: ${Colors.gray[100]};
+        color: ${Colors.white};
         font-size: 20px;
         font-weight: 900;
     }
 
-    &:hover {
-        background: ${Colors.gray[500]};
+    > * {
+        z-index: 2; // prevent other elements go down ::before
     }
 
-    &:active {
-        background: ${Colors.gray[400]};
+    &::before {
+        content: '';
+        position: absolute;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+
+        border-radius: 80px;
+        background: linear-gradient(90deg, #f15623 0%, #ad2211 100%);
+
+        z-index: 1;
+
+        transition: filter 0.2s ease-in-out;
+
+        filter: brightness(1);
+    }
+
+    &:hover::before {
+        filter: brightness(0.85);
+    }
+
+    &:active::before {
+        filter: brightness(0.75);
+    }
+`;
+
+const GoToNextSectionBtn = styled(ButtonBase)`
+    width: 100%;
+    height: 15%;
+
+    position: absolute;
+    bottom: 0;
+`;
+
+const MovingIcon = styled(BigArrowRight)`
+    fill: ${hexToRGBA(Colors.white, 0.3)};
+    transform: rotate(90deg);
+    position: absolute;
+    bottom: 20px;
+    animation: bounce 2s ease-in-out infinite;
+
+    @keyframes bounce {
+        0% {
+            rotate: 90deg;
+            transform: translateX(0);
+        }
+        50% {
+            rotate: 90deg;
+            transform: translateX(-40px);
+        }
+        100% {
+            rotate: 90deg;
+            transform: translateX(0);
+        }
     }
 `;
 
@@ -128,18 +198,33 @@ const WhoWeAre = () => {
 
     const { t } = useTranslation(['WhoWeAre']);
 
+    const titleAccent = t('title').slice(0, 2);
+
+    const titleRest = t('title').slice(2);
+
+    const onClickGoToNext = () => {
+        scrollRef.current.scrollIntoView({ behavior: 'smooth' });
+    };
+
     return (
         <>
             <IntroBox>
                 <TitleBox>
-                    <Title>{t('title')}</Title>
+                    <Title>
+                        <span className="accent">{titleAccent}</span>
+                        {titleRest}
+                    </Title>
                     <SubTitle>{t('subTitle')}</SubTitle>
                 </TitleBox>
 
                 <SectionMoveBtn onClick={() => window.open(WHO_WE_ARE_HREF, '_blank')}>
                     <span className="typo">Who We Are</span>
-                    <LeftArrowLong style={{ fill: Colors.black, stroke: Colors.black }} />
+                    <LeftArrowLong style={{ fill: Colors.white, stroke: Colors.white }} />
                 </SectionMoveBtn>
+
+                <GoToNextSectionBtn onClick={onClickGoToNext}>
+                    <MovingIcon />
+                </GoToNextSectionBtn>
             </IntroBox>
             <DetailBox ref={scrollRef} id="who-we-are-light">
                 <DetailSectionSubTitle>who we are</DetailSectionSubTitle>

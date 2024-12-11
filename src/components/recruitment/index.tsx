@@ -65,16 +65,7 @@ const OpenRolesBtn = styled(ButtonBase)<{ $lang: string }>`
     align-items: center;
     gap: 16px;
 
-    border-radius: 60px;
-    background: ${Colors.priamry[5]};
-
-    margin: 0;
-
-    border: unset;
-
-    cursor: pointer;
-
-    transition: all 0.2s;
+    position: relative;
 
     .title {
         color: var(--Gray-900, #fff);
@@ -82,12 +73,31 @@ const OpenRolesBtn = styled(ButtonBase)<{ $lang: string }>`
         font-weight: ${({ $lang }) => ($lang === 'ko' ? 700 : 800)};
     }
 
-    &:hover {
-        background: linear-gradient(0deg, rgba(0, 0, 0, 0.05) 0%, rgba(0, 0, 0, 0.05) 100%), ${Colors.priamry[5]};
+    > * {
+        z-index: 1;
     }
 
-    &:active {
-        background: linear-gradient(0deg, rgba(0, 0, 0, 0.1) 0%, rgba(0, 0, 0, 0.1) 100%), ${Colors.priamry[5]};
+    &::before {
+        content: '';
+        position: absolute;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+
+        border-radius: 60px;
+        background: ${Colors.priamry[5]};
+
+        filter: brightness(1);
+        transition: filter 0.2s;
+    }
+
+    &:hover::before {
+        filter: brightness(0.95);
+    }
+
+    &:active::before {
+        filter: brightness(0.9);
     }
 `;
 

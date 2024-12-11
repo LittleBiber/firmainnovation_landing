@@ -1,6 +1,7 @@
 const BASE_URL = '/images';
 
 const pngImages = {
+    main: BASE_URL + '/main_bg.png',
     tech: {
         // AS_IS
         efficiency: BASE_URL + '/tech_efficiency.png',

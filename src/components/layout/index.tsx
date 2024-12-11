@@ -7,7 +7,6 @@ const Layout = ({ children }: { children: ReactNode }) => {
     return (
         <>
             <Header />
-            <div style={{ height: '80px' }} id="header-placeholder" /* Placeholder for fixed header */ />
             {children}
             <Footer />
         </>
