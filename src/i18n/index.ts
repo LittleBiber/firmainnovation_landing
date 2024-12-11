@@ -10,6 +10,8 @@ export interface IWhoWeAre {
     subTitle: string;
     detailTitle: string;
     detailDesc: string;
+
+    scrollTypo: string;
 }
 export interface ITech {
     title: string;

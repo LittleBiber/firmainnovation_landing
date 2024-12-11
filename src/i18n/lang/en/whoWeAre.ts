@@ -5,7 +5,9 @@ const WhoWeAre = {
     subTitle: 'FIG develops AI agents for smart contract users.',
 
     detailTitle: 'We integrate cutting-edge blockchain and AI technologies\ninto advanced electronic contract services.',
-    detailDesc: 'FIG specializes in developing LLM and smart contract technologies, building on its electronic contract service, DONUE'
+    detailDesc: 'FIG specializes in developing LLM and smart contract technologies, building on its electronic contract service, DONUE',
+
+    scrollTypo: 'Scroll to learn more'
 } satisfies IWhoWeAre;
 
 export default WhoWeAre;

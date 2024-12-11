@@ -1,10 +1,9 @@
-import { useRef } from 'react';
 import { useTranslation } from 'react-i18next';
 import styled from 'styled-components';
 
 import { WHO_WE_ARE_HREF } from '../../constant';
 import pngImages from '../../constant/pngImages';
-import { BigArrowRight, LeftArrowLong } from '../../constant/svgImages';
+import { DownArrowSmall, LeftArrowLong } from '../../constant/svgImages';
 import { useGlobalContext } from '../../context/globalContext';
 import Colors from '../../theme/color';
 import { hexToRGBA } from '../../util';
@@ -67,7 +66,7 @@ const DetailSectionSubTitle = styled.div`
     text-align: center;
 
     /* EN/Heading/E) H5 - Bd */
-    // font-family: 'Satoshi Variable';
+
     font-size: 18px;
     font-style: normal;
     font-weight: 900;
@@ -78,7 +77,7 @@ const DetailSectionSubTitle = styled.div`
 
 const DetailDesc = styled.div`
     color: ${Colors.gray[200]};
-    // font-family: 'Satoshi Variable';
+
     font-size: 20px;
     font-style: normal;
     font-weight: 400;
@@ -90,7 +89,7 @@ const Title = styled.div`
     color: ${Colors.white};
 
     /* EN/Title/E) T1 */
-    // font-family: 'Satoshi Variable';
+
     font-size: 64px;
     font-weight: 900;
 
@@ -131,7 +130,7 @@ const SectionMoveBtn = styled(ButtonBase)`
     }
 
     > * {
-        z-index: 2; // prevent other elements go down ::before
+        z-index: 1; // prevent other elements go down ::before
     }
 
     &::before {
@@ -144,8 +143,6 @@ const SectionMoveBtn = styled(ButtonBase)`
 
         border-radius: 80px;
         background: linear-gradient(90deg, #f15623 0%, #ad2211 100%);
-
-        z-index: 1;
 
         transition: filter 0.2s ease-in-out;
 
@@ -161,50 +158,52 @@ const SectionMoveBtn = styled(ButtonBase)`
     }
 `;
 
-const GoToNextSectionBtn = styled(ButtonBase)`
-    width: 100%;
-    height: 15%;
+const GoToNextSectionBtn = styled.div<{ $lang: string }>`
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
 
     position: absolute;
-    bottom: 0;
-`;
+    bottom: 32px;
 
-const MovingIcon = styled(BigArrowRight)`
-    fill: ${hexToRGBA(Colors.white, 0.3)};
-    transform: rotate(90deg);
-    position: absolute;
-    bottom: 20px;
     animation: bounce 2s ease-in-out infinite;
 
     @keyframes bounce {
         0% {
-            rotate: 90deg;
-            transform: translateX(0);
+            transform: translateY(0);
         }
         50% {
-            rotate: 90deg;
-            transform: translateX(-40px);
+            transform: translateY(-20px);
         }
         100% {
-            rotate: 90deg;
-            transform: translateX(0);
+            transform: translateY(0);
         }
+    }
+
+    .typo {
+        color: ${hexToRGBA(Colors.gray[400], 0.5)};
+
+        font-size: 16px;
+        font-style: normal;
+        font-weight: ${({ $lang }) => ($lang === 'ko' ? 600 : 700)};
+        line-height: 24px; /* 150% */
+    }
+
+    svg {
+        width: 12px;
+        height: 12px;
+        stroke: ${hexToRGBA(Colors.white, 0.5)};
     }
 `;
 
 const WhoWeAre = () => {
-    const scrollRef = useRef<HTMLDivElement | null>(null);
     const { lang } = useGlobalContext();
 
     const { t } = useTranslation(['WhoWeAre']);
 
     const titleAccent = t('title').slice(0, 2);
-
     const titleRest = t('title').slice(2);
-
-    const onClickGoToNext = () => {
-        scrollRef.current.scrollIntoView({ behavior: 'smooth' });
-    };
 
     return (
         <>
@@ -222,11 +221,12 @@ const WhoWeAre = () => {
                     <LeftArrowLong style={{ fill: Colors.white, stroke: Colors.white }} />
                 </SectionMoveBtn>
 
-                <GoToNextSectionBtn onClick={onClickGoToNext}>
-                    <MovingIcon />
+                <GoToNextSectionBtn $lang={lang}>
+                    <div className="typo">{t('scrollTypo')}</div>
+                    <DownArrowSmall />
                 </GoToNextSectionBtn>
             </IntroBox>
-            <DetailBox ref={scrollRef} id="who-we-are-light">
+            <DetailBox id="who-we-are-light">
                 <DetailSectionSubTitle>who we are</DetailSectionSubTitle>
                 <SectionTitle $lang={lang} style={{ color: Colors.black }}>
                     {t('detailTitle')}

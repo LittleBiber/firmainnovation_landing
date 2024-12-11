@@ -40,10 +40,17 @@ export const LeftArrowLong = (props: React.SVGProps<SVGSVGElement>) => {
     );
 };
 
-export const BigArrowRight = (props: React.SVGProps<SVGSVGElement>) => {
+export const DownArrowSmall = (props: React.SVGProps<SVGSVGElement>) => {
     return (
-        <svg viewBox="0 0 24 24" width="24" height="24" {...props}>
-            <path d="M6.23 20.23 8 22l10-10L8 2 6.23 3.77 14.46 12z" fill="current"></path>
+        <svg xmlns="http://www.w3.org/2000/svg" width="14" height="8" viewBox="0 0 14 8" fill="none" {...props}>
+            <path
+                d="M12.8333 1.08325L7 6.91659L1.16667 1.08325"
+                stroke="current"
+                stroke-opacity="0.5"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+            />
         </svg>
     );
 };
