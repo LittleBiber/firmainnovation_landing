@@ -51,5 +51,10 @@
         "process": "^0.11.10",
         "typescript": "^5.7.2",
         "webpack": "^5.97.0"
+    },
+    "overrides": {
+        "react-scripts": {
+            "typescript": "^5"
+        }
     }
 }
