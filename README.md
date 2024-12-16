@@ -3,7 +3,6 @@
 ## Requirements
 
 - Node v20+
-- Node v18 (Will work but could break)
 
 ## How to run
 
