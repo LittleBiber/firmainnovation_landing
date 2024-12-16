@@ -54,3 +54,26 @@ export const DownArrowSmall = (props: React.SVGProps<SVGSVGElement>) => {
         </svg>
     );
 };
+
+export const Hamburger = (props: React.SVGProps<SVGSVGElement>) => {
+    return (
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" {...props}>
+            <g clip-path="url(#clip0_801_858)">
+                <path d="M2 20V17.9344H22V20H2ZM2 13.0328V10.9672H22V13.0328H2ZM2 6.06555V4H22V6.06555H2Z" fill="current" />
+            </g>
+            <defs>
+                <clipPath id="clip0_801_858">
+                    <rect width="24" height="24" fill="current" />
+                </clipPath>
+            </defs>
+        </svg>
+    );
+};
+
+export const Close = (props: React.SVGProps<SVGSVGElement>) => {
+    return (
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" {...props}>
+            <path d="M5.6 20L4 18.4L10.4 12L4 5.6L5.6 4L12 10.4L18.4 4L20 5.6L13.6 12L20 18.4L18.4 20L12 13.6L5.6 20Z" fill="current" />
+        </svg>
+    );
+};

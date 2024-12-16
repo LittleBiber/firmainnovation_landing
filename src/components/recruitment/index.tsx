@@ -68,9 +68,10 @@ const OpenRolesBtn = styled(ButtonBase)<{ $lang: string }>`
     position: relative;
 
     .title {
-        color: var(--Gray-900, #fff);
-        font-size: 20px;
-        font-weight: ${({ $lang }) => ($lang === 'ko' ? 700 : 800)};
+        color: ${Colors.white};
+        font-size: 18px;
+        font-weight: 800;
+        line-height: 24px;
     }
 
     > * {

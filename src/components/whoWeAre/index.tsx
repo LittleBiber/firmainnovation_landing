@@ -67,10 +67,9 @@ const DetailSectionSubTitle = styled.div`
 
     /* EN/Heading/E) H5 - Bd */
 
-    font-size: 18px;
-    font-style: normal;
+    font-size: 16px;
     font-weight: 900;
-    line-height: normal;
+    line-height: 24px;
 
     text-transform: uppercase;
 `;

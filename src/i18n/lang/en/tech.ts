@@ -5,7 +5,7 @@ const Tech = {
     desc: `Integrating blockchain infrastructure with Large Language Models (LLMs) marks a breakthrough in the electronic contract industry. \nBy LLMs' intelligent, context-aware processing, we create a next-generation ecosystem\nfor contract management, negotiation, and execution.\nLet us explore how this technology can transform the industry.`,
 
     asIs: {
-        title: 'Providing reliable contract solutions through stable and efficient processes.',
+        title: 'Providing reliable contract solutions through stable and efficient processes',
 
         minify: {
             title: 'Simplified Contract Process',
@@ -34,10 +34,10 @@ const Tech = {
     },
 
     toBe: {
-        title: 'Smarter, automated contracting powered by LLM.',
+        title: 'Smarter, automated contracting powered by LLM',
 
         intelligentContract: {
-            title: 'Intelligent Contract Drafting\nand Customization',
+            title: 'Intelligent Contract\nDrafting and Customization',
             tags: [],
             detail: [
                 {
@@ -51,7 +51,7 @@ const Tech = {
             ]
         },
         automatedContract: {
-            title: 'Automated Smart Contract\nConversion',
+            title: 'Automated\nSmart Contract Conversion',
             tags: [],
             detail: [
                 {
@@ -93,7 +93,7 @@ const Tech = {
             ]
         },
         automatedLifeCycle: {
-            title: 'Automated Lifecycle Management',
+            title: 'Automated\nLifecycle Management',
             tags: [],
             detail: [
                 {

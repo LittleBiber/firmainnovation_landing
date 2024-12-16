@@ -9,7 +9,7 @@ const UseCase = {
             list: [
                 {
                     title: 'Draft a legally compliant contract in minutes',
-                    desc: 'Creating contracts tailored to the trade’s specifics, using the LLM.'
+                    desc: 'Creating contracts tailored to the trade’s specifics, using LLM.'
                 },
                 {
                     title: 'Translate the terms into multiple languages',
@@ -52,7 +52,7 @@ const UseCase = {
                     example: '"Generate a hedging contract for my portfolio if oil prices drop by more than 10%."',
                     features: [
                         {
-                            title: 'Simplification of Complex Financial Contracts',
+                            title: 'Hedging Contracts from Market Data Analysis',
                             desc: 'Automatically generates tailored hedging contracts, minimizing\nthe risk of loss by preparing for predictable market fluctuations.'
                         }
                     ]

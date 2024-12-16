@@ -1,12 +1,25 @@
 import { createContext, ReactNode, useContext, useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 
+import useBreakpoint from '../hook/useBreakPoint';
+
+// get all return types with ReturnType, and select type of 'matches' property.
+type MatchesType = ReturnType<typeof useBreakpoint>['matches'];
+
+type CurrentSizeType = keyof ReturnType<typeof useBreakpoint>['matches'];
+
 interface GlobalContextProps {
     lang: string;
     setLang: (v: string) => void;
 
     theme: string;
     setTheme: (v: string) => void;
+
+    breakPoints: MatchesType;
+
+    breakPoint: CurrentSizeType;
+
+    isMobile: boolean;
 }
 
 const LOCAL_LANG_KEY = 'lang';
@@ -39,6 +52,8 @@ export const GlobalProvider = ({ children }: { children: ReactNode }) => {
     const [lang, _setLang] = useState(localLang);
     const [theme, _setTheme] = useState('dark');
 
+    const { matches, current } = useBreakpoint();
+
     const setLang = (v: string) => {
         if (supportLang[v]) {
             _setLang(v);
@@ -47,6 +62,8 @@ export const GlobalProvider = ({ children }: { children: ReactNode }) => {
         }
     };
 
+    const isMobile = current !== 'desktop';
+
     const setTheme = (v: string) => {
         if (supportTheme[v]) _setTheme(v);
     };
@@ -54,10 +71,13 @@ export const GlobalProvider = ({ children }: { children: ReactNode }) => {
     return (
         <GlobalContext.Provider
             value={{
+                breakPoints: matches,
+                breakPoint: current,
                 lang,
                 setLang,
                 theme,
-                setTheme
+                setTheme,
+                isMobile
             }}
         >
             {children}

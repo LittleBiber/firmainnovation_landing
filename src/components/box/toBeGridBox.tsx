@@ -97,6 +97,8 @@ const OuterContent = styled(BoxBase)<{ $lang: string }>`
         font-size: 16px;
         font-weight: ${({ $lang }) => ($lang === 'ko' ? 800 : 900)};
         line-height: 24px; /* 150% */
+
+        white-space: pre;
     }
 `;
 
@@ -124,15 +126,15 @@ const DetailContent = styled.div<{ $lang: string }>`
 
 const ToBeDetailCardTitle = styled.div<{ $lang: string }>`
     display: flex;
-    padding: 12px 24px;
+    // padding: 12px 24px;
     justify-content: center;
     align-items: center;
 
     align-self: stretch;
 
-    border-radius: 12px;
-    border: 1px solid var(--Orange-400, #f68a58);
-    background: rgba(246, 138, 88, 0.1);
+    // border-radius: 12px;
+    // border: 1px solid var(--Orange-400, #f68a58);
+    // background: rgba(246, 138, 88, 0.1);
 
     color: ${Colors.white};
 
@@ -142,6 +144,7 @@ const ToBeDetailCardTitle = styled.div<{ $lang: string }>`
     line-height: 24px; /* 150% */
 
     text-align: center;
+    white-space: pre;
 `;
 
 const ToBeDetailBox = styled.div<{ $lang: string }>`
@@ -168,6 +171,14 @@ const ToBeDetailBox = styled.div<{ $lang: string }>`
     }
 `;
 
+const TitleDivider = styled.div`
+    align-self: stretch;
+    border-bottom: 1px solid;
+    border-color: ${hexToRGBA(Colors.priamry[3], 0.4)};
+
+    margin-top: -2px; // Fine-tune
+`;
+
 const ToBeGridBox = (data: ToBeGridData) => {
     const { lang } = useGlobalContext();
 
@@ -175,6 +186,8 @@ const ToBeGridBox = (data: ToBeGridData) => {
         <ContentBox>
             <DetailContent className="detail-box" $lang={lang}>
                 <ToBeDetailCardTitle $lang={lang}>{data.title}</ToBeDetailCardTitle>
+
+                <TitleDivider />
 
                 {data.detail.map((detail, index) => (
                     <ToBeDetailBox key={detail.title} $lang={lang}>
