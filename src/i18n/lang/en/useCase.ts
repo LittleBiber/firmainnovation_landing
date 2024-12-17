@@ -16,7 +16,7 @@ const UseCase = {
                     desc: 'Multiple languages translation for cross-border understanding.'
                 },
                 {
-                    title: 'Convert the terms into a smart contract',
+                    title: 'Convert the terms int a smart contract',
                     desc: 'for automatic execution of payments and deliveries;\nall recorded securely on the blockchain.'
                 },
                 {
@@ -49,10 +49,10 @@ const UseCase = {
                 },
                 {
                     title: '2. Risk Hedging with LLM Application',
-                    example: '"Generate a hedging contract for my portfolio if oil prices drop by more than 10%."',
+                    example: '"Generate a hedge for my portfolio if oil prices fall by more than 10%."',
                     features: [
                         {
-                            title: 'Hedging Contracts from Market Data Analysis',
+                            title: 'Hedging Contracts from\nMarket Data Analysis',
                             desc: 'Automatically generates tailored hedging contracts, minimizing\nthe risk of loss by preparing for predictable market fluctuations.'
                         }
                     ]

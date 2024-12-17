@@ -1,11 +1,11 @@
 import { ITech } from '../..';
 
 const Tech = {
-    title: 'Smart Electronic Contracts powered by LLM',
-    desc: `Integrating blockchain infrastructure with Large Language Models (LLMs) marks a breakthrough in the electronic contract industry. \nBy LLMs' intelligent, context-aware processing, we create a next-generation ecosystem\nfor contract management, negotiation, and execution.\nLet us explore how this technology can transform the industry.`,
+    title: 'Smart Electronic Contracts\n powered by LLM',
+    desc: `Integrating blockchain infrastructure with Large Language Models (LLMs) marks a breakthrough in the electronic contract industry.|br By LLMs' intelligent, context-aware processing, we create a next-generation ecosystem|br for contract management, negotiation, and execution.|br Let us explore how this technology can transform the industry.`,
 
     asIs: {
-        title: 'Providing reliable contract solutions through stable and efficient processes',
+        title: 'Providing reliable contract solutions\n through stable and efficient processes',
 
         minify: {
             title: 'Simplified Contract Process',
@@ -34,7 +34,7 @@ const Tech = {
     },
 
     toBe: {
-        title: 'Smarter, automated contracting powered by LLM',
+        title: 'Smarter, automated contracting\n powered by LLM',
 
         intelligentContract: {
             title: 'Intelligent Contract\nDrafting and Customization',

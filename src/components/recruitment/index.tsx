@@ -5,23 +5,24 @@ import { HIRE_HREF } from '../../constant';
 import { LeftArrowLong } from '../../constant/svgImages';
 import { useGlobalContext } from '../../context/globalContext';
 import Colors from '../../theme/color';
+import { parseLineSplit } from '../../util';
 import ButtonBase from '../button';
 
-const Content = styled.div`
+const Content = styled.div<{ $isMobile: boolean }>`
     display: flex;
     width: 100vw;
-    padding: 80px 40px;
+    padding: ${({ $isMobile }) => ($isMobile ? '40px 12px' : '80px 40px')};
     flex-direction: column;
     align-items: center;
 
     background: linear-gradient(105deg, ${Colors.priamry[5]} 20.06%, ${Colors.priamry[4]} 87.55%), #fff;
 `;
 
-const InfoBox = styled.div`
+const InfoBox = styled.div<{ $isMobile: boolean }>`
     display: flex;
     width: 100%;
     max-width: 1200px;
-    padding: 96px 40px;
+    padding: ${({ $isMobile }) => ($isMobile ? '40px 12px' : '96px 40px')};
     flex-direction: column;
     align-items: center;
     // gap: 40px;
@@ -30,30 +31,30 @@ const InfoBox = styled.div`
     background: #fff;
 `;
 
-const Title = styled.div<{ $lang: string }>`
+const Title = styled.div<{ $lang: string; $isMobile: boolean }>`
     color: ${Colors.gray[100]};
     text-align: center;
 
     /* KR/Title/K) T2 */
     // font-family: Pretendard;
-    font-size: 32px;
+    font-size: ${({ $isMobile }) => ($isMobile ? '22px' : '32px')};
 
     font-weight: ${({ $lang }) => ($lang === 'ko' ? 800 : 900)};
-    line-height: 44px;
+    line-height: ${({ $isMobile }) => ($isMobile ? '30px' : '44px')};
 `;
 
-const Desc = styled.div`
+const Desc = styled.div<{ $isMobile: boolean }>`
     color: ${Colors.gray[200]};
     text-align: center;
 
     /* KR/Heading/K) H3 - Rg */
     // font-family: Pretendard;
-    font-size: 20px;
+    font-size: ${({ $isMobile }) => ($isMobile ? '16px' : '20px')};
     font-style: normal;
     font-weight: 400;
     line-height: normal;
 
-    white-space: pre-wrap;
+    white-space: ${({ $isMobile }) => ($isMobile ? 'pre-line' : 'normal')};
 `;
 
 const OpenRolesBtn = styled(ButtonBase)<{ $lang: string }>`
@@ -103,17 +104,19 @@ const OpenRolesBtn = styled(ButtonBase)<{ $lang: string }>`
 `;
 
 const Recruitment = () => {
-    const { lang } = useGlobalContext();
+    const { lang, isMobile } = useGlobalContext();
 
     const { t } = useTranslation('Recruitment');
 
     return (
-        <Content>
-            <InfoBox>
-                <Title $lang={lang}>{t('title')}</Title>
-                <div style={{ height: '12px' }} />
-                <Desc>{t('desc')}</Desc>
-                <div style={{ height: '32px' }} />
+        <Content $isMobile={isMobile}>
+            <InfoBox $isMobile={isMobile}>
+                <Title $lang={lang} $isMobile={isMobile}>
+                    {t('title')}
+                </Title>
+                <div style={{ height: isMobile ? '8px' : '12px' }} />
+                <Desc $isMobile={isMobile}>{parseLineSplit(t('desc'))}</Desc>
+                <div style={{ height: isMobile ? '24px' : '32px' }} />
                 <OpenRolesBtn $lang={lang} onClick={() => window.open(HIRE_HREF, '_blank')}>
                     <span className="title">{t('buttonTypo')}</span>
                     <LeftArrowLong style={{ fill: Colors.white, stroke: Colors.white }} />

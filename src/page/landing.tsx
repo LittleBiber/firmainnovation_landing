@@ -10,7 +10,6 @@ const Landing = () => {
             <Intro />
             <WhoWeAre />
             <Tech />
-
             <Recruitment />
         </Layout>
     );

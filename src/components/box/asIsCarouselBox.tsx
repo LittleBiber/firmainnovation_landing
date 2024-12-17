@@ -77,24 +77,26 @@ const AsIsContent = styled(BoxBase)<{ $lang: string; $carousel?: boolean }>`
     }
 `;
 
-const AsIsGridBox = (data: AsIsGridData) => {
+const AsIsCarouselBox = (data: AsIsGridData) => {
     const { lang } = useGlobalContext();
 
     return (
-        <AsIsContent $lang={lang}>
-            <div className="title-box">
-                <img src={data.img} alt={data.img} />
-                <div className="title">{data.title}</div>
-            </div>
-            <div className="tag-box">
-                {data.tags.map((tag: string, key) => (
-                    <div className="tag" key={`${data.title}_${key}`}>
-                        {tag}
-                    </div>
-                ))}
-            </div>
-        </AsIsContent>
+        <div style={{ width: '100%', padding: '0 20px', display: 'flex' }}>
+            <AsIsContent $lang={lang} $carousel>
+                <div className="title-box">
+                    <img src={data.img} alt={data.img} />
+                    <div className="title">{data.title}</div>
+                </div>
+                <div className="tag-box">
+                    {data.tags.map((tag: string, key) => (
+                        <div className="tag" key={`${data.title}_${key}`}>
+                            {tag}
+                        </div>
+                    ))}
+                </div>
+            </AsIsContent>
+        </div>
     );
 };
 
-export default AsIsGridBox;
+export default AsIsCarouselBox;

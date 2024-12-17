@@ -1,4 +1,4 @@
-import React, { useEffect, useMemo, useRef, useState } from 'react';
+import { useMemo } from 'react';
 import { useTranslation } from 'react-i18next';
 import styled from 'styled-components';
 
@@ -7,7 +7,7 @@ import pngImages from '../../constant/pngImages';
 import { useGlobalContext } from '../../context/globalContext';
 import Colors from '../../theme/color';
 import { hexToRGBA, parseLineSplit } from '../../util';
-import AsIsGridBox from '../box/asIsGridBox';
+import CarouselSection from './asIsCarousel';
 
 const keys = ['minify', 'efficiency', 'security', 'nego', 'tracking', 'insight'];
 
@@ -18,8 +18,8 @@ const ContentBox = styled.div<{ $variant: 'as-is' | 'to-be' }>`
     display: flex;
     flex-direction: column;
     align-items: center;
-    padding: 48px 60px;
-    gap: 28px;
+    padding: 42px 0 28px;
+    gap: 20px;
     border-radius: 24px;
 
     ${({ $variant }) =>
@@ -37,7 +37,7 @@ const AsIsTitle = styled.div`
     display: flex;
     width: 200px;
     height: 52px;
-    padding: 14px 40px;
+    padding: 12px 40px;
     justify-content: center;
     align-items: center;
     gap: 16px;
@@ -55,19 +55,22 @@ const AsIsTitle = styled.div`
 `;
 
 const AsIsSubTitle = styled.div<{ $lang: string }>`
-    color: ${Colors.gray[400]};
+    color: ${Colors.gray[300]};
 
     /* KR/Body/K) Body1 - Rg */
     // font-family: Pretendard;
-    font-size: 16px;
+    font-size: 13px;
     font-style: normal;
     font-weight: ${({ $lang }) => ($lang === 'ko' ? 600 : 700)};
-    line-height: 24px; /* 150% */
+    line-height: 18px; /* 150% */
 
     text-align: center;
+    white-space: pre;
+
+    padding: 0 40px;
 `;
 
-const AsIsGrid = () => {
+const AsIsCaurosel = () => {
     const { t } = useTranslation('Tech');
     const { lang } = useGlobalContext();
 
@@ -87,24 +90,10 @@ const AsIsGrid = () => {
                 <AsIsTitle>AS-IS</AsIsTitle>
 
                 <AsIsSubTitle $lang={lang}>{gridTitle}</AsIsSubTitle>
-
-                <div
-                    style={{
-                        display: 'grid',
-                        gridTemplateColumns: `repeat(auto-fill, 344px)`,
-                        gap: '24px 20px',
-                        justifyItems: 'center',
-                        width: '100%',
-                        justifyContent: 'center'
-                    }}
-                >
-                    {asIsList.map((data, key) => (
-                        <AsIsGridBox {...data} key={`as-is-${key}`} />
-                    ))}
-                </div>
+                <CarouselSection list={asIsList} />
             </ContentBox>
         </Wrapper>
     );
 };
 
-export default React.memo(AsIsGrid);
+export default AsIsCaurosel;

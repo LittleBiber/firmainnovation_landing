@@ -128,7 +128,7 @@ const Desktop = () => {
         div3: false
     });
 
-    const headerRef = useRef(null); // Fixed 헤더 참조
+    const headerRef = useRef(null); // Ref to fixed header
 
     const checkOverlap = () => {
         const headerPlaceholder = document.getElementById('header-placeholder');
@@ -145,17 +145,16 @@ const Desktop = () => {
                 if (div) {
                     const divRect = div.getBoundingClientRect();
 
-                    // 헤더와 해당 div가 겹치는지 확인
+                    // Check if header overlap to each component
                     const overlapTop = Math.max(headerRect.top, divRect.top);
                     const overlapBottom = Math.min(headerRect.bottom, divRect.bottom);
-                    const overlapHeight = Math.max(0, overlapBottom - overlapTop); // 음수 방지
+                    const overlapHeight = Math.max(0, overlapBottom - overlapTop); // block value below zero
 
-                    // 헤더의 절반 이상이 덮였는지 확인
+                    // Check more than half has covered
                     const headerHeight = headerRect.height;
                     const isOverlapping = overlapHeight >= headerHeight / 2;
-                    // const isOverlapping = headerRect.bottom > divRect.top && headerRect.top < divRect.bottom;
 
-                    // 상태값 업데이트용 객체 생성
+                    // Create new obj for update
                     newState[`div${index + 1}`] = isOverlapping;
                 }
             });
@@ -165,7 +164,7 @@ const Desktop = () => {
     };
 
     useEffect(() => {
-        // 스크롤이나 리사이즈 이벤트에 반응
+        // Response to scroll / resize
         const handleScrollOrResize = () => {
             checkOverlap();
         };
@@ -173,7 +172,7 @@ const Desktop = () => {
         window.addEventListener('scroll', handleScrollOrResize, { passive: true });
         window.addEventListener('resize', handleScrollOrResize);
 
-        // 컴포넌트 로드 시 초기 확인
+        // Inital check when load
         checkOverlap();
 
         return () => {

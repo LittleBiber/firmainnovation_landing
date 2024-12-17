@@ -117,23 +117,18 @@ export interface IRecruitment {
 }
 
 const options = {
-    order: ['localStorage', 'navigator'], // 탐지 순서: 로컬 스토리지 > 브라우저 설정
-    caches: ['localStorage'], // 언어 정보를 저장할 위치
-    lookupLocalStorage: 'lang' // 로컬 스토리지에 사용할 키
+    order: ['localStorage', 'navigator'], // Detect order: localStorage -> browser
+    caches: ['localStorage'], // save to
+    lookupLocalStorage: 'lang' // key using on localstorage
 };
 
-i18n.use(LanguageDetector)
-    .use(initReactI18next) // React와 연동
-    .init({
-        detection: options,
-        resources: { en, ko },
+i18n.use(LanguageDetector).use(initReactI18next).init({
+    detection: options,
+    resources: { en, ko },
 
-        fallbackLng: 'en', // 기본 언어
-        debug: true,
-        returnObjects: true,
-        interpolation: {
-            escapeValue: false // React는 XSS 방지를 기본으로 처리
-        }
-    });
+    fallbackLng: 'en', // Default lang
+    debug: true,
+    returnObjects: true
+});
 
 export default i18n;

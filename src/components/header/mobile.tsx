@@ -26,7 +26,7 @@ const Content = styled.div<{ $open: boolean; $theme: string }>`
     background: ${({ $open, $theme }) => ($open ? 'transparent' : hexToRGBA($theme === 'light' ? Colors.black : Colors.white, 0.02))};
     backdrop-filter: blur(8px) ${({ $open }) => ($open ? 'opacity(0)' : 'opacity(1)')};
 
-    transition: all 0.3s;
+    // transition: all 0.3s;
 
     pointer-events: none;
 
@@ -40,7 +40,7 @@ const HamburgerBtn = styled(ButtonBase)`
 `;
 
 const FullScreenMenu = styled.div<{ $open: boolean }>`
-    width: 100vw;
+    width: ${({ $open }) => ($open ? '100vw' : '0px')};
     height: 100vh;
 
     padding: 56px 16px 0;
@@ -52,7 +52,7 @@ const FullScreenMenu = styled.div<{ $open: boolean }>`
     top: 0;
     z-index: ${999};
 
-    transition: right 0.3s ease-in-out;
+    // transition: all 0.5s ease-in-out;
 `;
 
 const MenuBox = styled(ButtonBase)`
@@ -156,7 +156,7 @@ const Mobile = () => {
         div3: false
     });
 
-    const headerRef = useRef(null); // Fixed 헤더 참조
+    const headerRef = useRef(null); // Ref to fixed header
 
     const checkOverlap = () => {
         const headerPlaceholder = document.getElementById('header-placeholder');
@@ -173,17 +173,17 @@ const Mobile = () => {
                 if (div) {
                     const divRect = div.getBoundingClientRect();
 
-                    // 헤더와 해당 div가 겹치는지 확인
+                    // Check if header overlap to each component
                     const overlapTop = Math.max(headerRect.top, divRect.top);
                     const overlapBottom = Math.min(headerRect.bottom, divRect.bottom);
-                    const overlapHeight = Math.max(0, overlapBottom - overlapTop); // 음수 방지
+                    const overlapHeight = Math.max(0, overlapBottom - overlapTop); // block value below zero
 
-                    // 헤더의 절반 이상이 덮였는지 확인
+                    // Check more than half has covered
                     const headerHeight = headerRect.height;
                     const isOverlapping = overlapHeight >= headerHeight / 2;
                     // const isOverlapping = headerRect.bottom > divRect.top && headerRect.top < divRect.bottom;
 
-                    // 상태값 업데이트용 객체 생성
+                    // Create new obj for update
                     newState[`div${index + 1}`] = isOverlapping;
                 }
             });
@@ -193,7 +193,7 @@ const Mobile = () => {
     };
 
     useEffect(() => {
-        // 스크롤이나 리사이즈 이벤트에 반응
+        // Response to scroll / resize
         const handleScrollOrResize = () => {
             checkOverlap();
         };
@@ -201,7 +201,7 @@ const Mobile = () => {
         window.addEventListener('scroll', handleScrollOrResize, { passive: true });
         window.addEventListener('resize', handleScrollOrResize);
 
-        // 컴포넌트 로드 시 초기 확인
+        // Inital check when load
         checkOverlap();
 
         return () => {
@@ -220,19 +220,24 @@ const Mobile = () => {
         else return 'dark';
     }, [overlapState]);
 
-    useEffect(() => {
-        return () => {
-            setOpen(false); // Close full-screen menu when mobile header removed
-        };
-    }, []);
-
-    useEffect(() => {
-        const body = document.getElementsByTagName('body')[0];
-        if (open) {
+    const blockScroll = (state: boolean) => {
+        const body = document.getElementsByTagName('html')[0];
+        if (state) {
             body.style.overflowY = 'hidden';
         } else {
             body.style.overflowY = 'auto';
         }
+    };
+
+    useEffect(() => {
+        return () => {
+            setOpen(false); // Close full-screen menu when mobile header removed
+            blockScroll(false);
+        };
+    }, []);
+
+    useEffect(() => {
+        blockScroll(open);
     }, [open]);
 
     return (

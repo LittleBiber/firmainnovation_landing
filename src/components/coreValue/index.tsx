@@ -4,13 +4,13 @@ import styled from 'styled-components';
 import { useGlobalContext } from '../../context/globalContext';
 import Colors from '../../theme/color';
 
-const Content = styled.div`
+const Content = styled.div<{ $isMobile: boolean }>`
     display: flex;
     width: 100%;
     max-width: 1200px;
     flex-direction: column;
     align-items: center;
-    gap: 56px;
+    gap: ${({ $isMobile }) => ($isMobile ? '28px' : '56px')};
 `;
 
 const Title = styled.div`
@@ -24,6 +24,7 @@ const Title = styled.div`
     line-height: normal;
 
     text-transform: uppercase;
+    text-align: center;
 `;
 
 const ValueList = styled.div`
@@ -107,12 +108,12 @@ const Card = styled.div<{ $lang: string }>`
 
 const CoreValue = () => {
     const { t } = useTranslation('CoreValue');
-    const { lang } = useGlobalContext();
+    const { lang, isMobile } = useGlobalContext();
 
     const list = t('list') as unknown as { title: string; desc: string }[];
 
     return (
-        <Content>
+        <Content $isMobile={isMobile}>
             <Title>{t('title')}</Title>
             <ValueList>
                 {list.map((data, index) => (

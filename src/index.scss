@@ -7,6 +7,8 @@
     -moz-osx-font-smoothing: grayscale;
     text-rendering: optimizeLegibility;
     font-variant-ligatures: none;
+
+    word-break: keep-all;
 }
 
 body {
@@ -26,7 +28,8 @@ body {
  */
 
 html {
-    width: 100vw;
+    width: 100%;
+    overflow-x: hidden;
 
     line-height: 1.15;
     /* 1 */

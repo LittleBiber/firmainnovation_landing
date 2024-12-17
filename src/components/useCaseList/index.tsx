@@ -1,10 +1,11 @@
 import { useTranslation } from 'react-i18next';
 import styled from 'styled-components';
 
-import UseCase from '../useCase';
-import UseCase2 from '../useCase/variant';
+import { useGlobalContext } from '../../context/globalContext';
+import UseCase from '../useCase/type1';
+import UseCase2 from '../useCase/type2';
 
-const Content = styled.div`
+const Content = styled.div<{ $isMobile: boolean }>`
     width: 100%;
 
     display: flex;
@@ -13,19 +14,20 @@ const Content = styled.div`
 
     align-items: center;
 
-    gap: 120px;
+    gap: ${({ $isMobile }) => ($isMobile ? '64px' : '120px')};
 
-    padding: 120px 0;
+    padding: ${({ $isMobile }) => ($isMobile ? '88px 0' : '120px 0')};
 `;
 
 const UseCaseList = () => {
+    const { isMobile } = useGlobalContext();
     const { t } = useTranslation('UseCase');
 
     const type1Ex = t('type1Example') as unknown as any[];
     const type2Ex = t('type2Example') as unknown as any[];
 
     return (
-        <Content>
+        <Content $isMobile={isMobile}>
             {type1Ex.map((data, index) => (
                 <UseCase data={data} key={`usecase-type1-${index}`} />
             ))}

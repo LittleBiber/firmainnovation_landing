@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 
-import Colors from '../../theme/color';
-import { hexToRGBA } from '../../util';
+import Colors from '../../../theme/color';
+import { hexToRGBA } from '../../../util';
 
 export interface IUseCaseTpy1 {
     index: number;
@@ -10,7 +10,7 @@ export interface IUseCaseTpy1 {
     list: { title: string; desc: string }[];
 }
 
-export const ContentBox = styled.div<{ $lang: string }>`
+export const ContentBox = styled.div<{ $lang: string; $isMobile: boolean }>`
     max-width: 1200px;
     width: 100%;
 
@@ -18,20 +18,20 @@ export const ContentBox = styled.div<{ $lang: string }>`
     background: ${hexToRGBA(Colors.gray[200], 0.15)}; // rgba(117, 112, 114, 0.05); // change by request
     backdrop-filter: blur(1px);
 
-    padding: 64px 40px;
+    padding: ${({ $isMobile }) => ($isMobile ? '40px 24px' : '64px 40px')};
 
     display: flex;
     flex-direction: column;
     align-items: center;
 
-    gap: 48px;
+    gap: ${({ $isMobile }) => ($isMobile ? '32px' : '48px')};
 
     .case-number {
         color: rgba(117, 112, 114, 0.5);
 
         /* EN/Body/E) Body1 - Bd */
         // font-family: 'Satoshi Variable';
-        font-size: 16px;
+        font-size: ${({ $isMobile }) => ($isMobile ? '14px' : '16px')};
         font-style: normal;
         font-weight: 900;
         line-height: 24px; /* 150% */
@@ -43,10 +43,12 @@ export const ContentBox = styled.div<{ $lang: string }>`
         color: var(--Gray-900, #fff);
 
         /* EN/Heading/E) H3 - Bd */
-        font-size: 22px;
+        font-size: ${({ $isMobile }) => ($isMobile ? '20px' : '22px')};
         font-style: normal;
         font-weight: ${({ $lang }) => ($lang === 'ko' ? 800 : 900)};
         line-height: 30px;
+
+        text-align: center;
     }
 
     .desc {
@@ -55,7 +57,7 @@ export const ContentBox = styled.div<{ $lang: string }>`
 
         /* KR/Heading/K) H5 - Rg */
         // font-family: Pretendard;
-        font-size: 16px;
+        font-size: ${({ $isMobile }) => ($isMobile ? '14px' : '16px')};
         font-style: normal;
         font-weight: 400;
         line-height: 24px; /* 133.333% */
@@ -88,8 +90,10 @@ export const PointBox = styled.div<{ $lang: string }>`
         align-items: center;
         justify-content: center;
 
-        //텍스트
+        // Text
         color: ${Colors.gray[700]};
+
+        text-align: center;
 
         /* KR/Heading/K) H5 - Bd */
         // font-family: Pretendard;
@@ -115,5 +119,49 @@ export const PointBox = styled.div<{ $lang: string }>`
         line-height: 18px; /* 150% */
         white-space: pre-wrap;
         text-align: center;
+    }
+`;
+
+export const PointBoxMobile = styled.div<{ $lang: string }>`
+    width: 100%;
+
+    .title-box {
+        width: 100%;
+        border-radius: 12px 12px 0px 0px;
+        background: linear-gradient(93deg, #cf3919 -0.59%, #f68a58 150.18%);
+        box-shadow: 0px 4px 32px 0px rgba(71, 33, 21, 0.4);
+
+        padding: 16px 12px;
+
+        text-align: center;
+
+        // Text
+        color: ${Colors.white};
+        font-size: 16px;
+        font-style: normal;
+        font-weight: ${({ $lang }) => ($lang === 'ko' ? 600 : 700)};
+        line-height: 24px; /* 150% */
+        white-space: pre-line;
+    }
+
+    .desc-box {
+        width: 100%;
+        border-radius: 0px 0px 12px 12px;
+        background: linear-gradient(90deg, rgba(67, 64, 65, 0.5) 0%, rgba(149, 149, 149, 0.5) 99.05%);
+
+        padding: 16px 12px;
+
+        text-align: center;
+
+        // Text
+        color: ${Colors.gray[700]};
+        text-align: center;
+
+        font-size: 13px;
+        font-style: normal;
+        font-weight: 400;
+        line-height: 18px; /* 138.462% */
+
+        white-space: pre-wrap;
     }
 `;
