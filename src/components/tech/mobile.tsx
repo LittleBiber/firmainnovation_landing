@@ -40,10 +40,16 @@ const SectionDesc = styled.div`
     white-space: normal;
 `;
 
+const TechArrow = styled.img`
+    width: 80px;
+    height: 68px;
+    margin-top: -50px;
+`;
+
 const TechLogo = () => {
     return (
         <div style={{ position: 'relative', display: 'flex' }}>
-            <img src="/images/tech_section_title.png" alt="tech-title" style={{ width: '140px' }} />
+            <img src="/images/tech_section_title.png" alt="tech-title" style={{ width: '140px', marginBottom: '4px' }} />
             <div style={{ width: '100%', height: '14px', position: 'absolute', bottom: 0, background: Colors.gray[100] }} />
         </div>
     );
@@ -66,7 +72,7 @@ const Tech = () => {
             <div style={{ width: '100%', display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '40px' }}>
                 <AsIsCaurosel />
 
-                <img src={pngImages.tech.arrow} alt="arrow" style={{ width: '80px', height: '68px', marginTop: '-48px' }} />
+                <TechArrow src={pngImages.tech.arrow} alt="arrow" />
                 <ToBeCarousel />
             </div>
 

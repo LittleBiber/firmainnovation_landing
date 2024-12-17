@@ -32,7 +32,7 @@ const CopyRightTypo = styled.div`
 
 const RoutBox = styled.div`
     display: flex;
-    flex-direciton: row;
+    flex-direction: row;
     align-items: center;
     gap: 40px;
 `;

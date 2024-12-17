@@ -20,7 +20,8 @@ const ContentBox = styled(BoxBase)<{ $lang: string }>`
     display: flex;
     position: relative;
     width: 100%;
-    height: ${({ $lang }) => ($lang === 'ko' ? '376px' : '402px')};
+    height: 100%;
+    min-height: ${({ $lang }) => ($lang === 'ko' ? '310px' : '402px')};
 
     &:hover {
         .outer-box {
@@ -130,6 +131,8 @@ const ToBeDetailBox = styled.div<{ $lang: string }>`
         font-size: 14px;
         font-weight: 400;
         line-height: ${({ $lang }) => ($lang === 'ko' ? '20px' : 'normal')};
+
+        word-break: ${({ $lang }) => ($lang === 'ko' ? 'break-all' : 'keep-all')};
     }
 `;
 

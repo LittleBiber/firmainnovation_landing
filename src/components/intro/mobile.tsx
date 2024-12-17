@@ -147,10 +147,10 @@ const GoToNextSectionBtn = styled.div<{ $lang: string }>`
     .typo {
         color: ${hexToRGBA(Colors.gray[400], 0.5)};
 
-        font-size: 16px;
+        font-size: 14px;
         font-style: normal;
         font-weight: ${({ $lang }) => ($lang === 'ko' ? 600 : 700)};
-        line-height: 24px; /* 150% */
+        line-height: 19px;
     }
 
     svg {

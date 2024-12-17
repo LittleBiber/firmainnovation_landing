@@ -4,6 +4,7 @@ import styled from 'styled-components';
 
 import { ToBeGridData } from '../../@types';
 import pngImages from '../../constant/pngImages';
+import { useGlobalContext } from '../../context/globalContext';
 import Colors from '../../theme/color';
 import { hexToRGBA, parseLineSplit } from '../../util';
 import ToBeGridBox from '../box/toBeGridBox';
@@ -76,19 +77,20 @@ const ToBeTitle = styled.div`
     font-weight: 900;
 `;
 
-const ToBeSubTitle = styled.div`
+const ToBeSubTitle = styled.div<{ $lang: string }>`
     color: ${Colors.white};
 
     /* KR/Heading/K) H5 - Bd */
 
     font-size: 18px;
 
-    font-weight: 800;
+    font-weight: ${({ $lang }) => ($lang === 'ko' ? 800 : 900)};
     line-height: 24px; /* 133.333% */
 `;
 
 const ToBeGrid = () => {
     const { t } = useTranslation('Tech');
+    const { lang } = useGlobalContext();
 
     const gridTitle = parseLineSplit(t('toBe.title'));
 
@@ -105,7 +107,7 @@ const ToBeGrid = () => {
         <div style={{ position: 'relative', paddingTop: '28px', width: '100%', maxWidth: '1200px' }}>
             <ToBeTitle>TO-BE</ToBeTitle>
             <ContentBox $variant={'to-be'}>
-                <ToBeSubTitle>{gridTitle}</ToBeSubTitle>
+                <ToBeSubTitle $lang={lang}>{gridTitle}</ToBeSubTitle>
 
                 <div
                     style={{

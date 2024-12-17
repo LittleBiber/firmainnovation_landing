@@ -11,7 +11,7 @@ import ButtonBase from '../button';
 const Content = styled.div<{ $isMobile: boolean }>`
     display: flex;
     width: 100vw;
-    padding: ${({ $isMobile }) => ($isMobile ? '40px 12px' : '80px 40px')};
+    padding: ${({ $isMobile }) => ($isMobile ? '40px 16px' : '80px 40px')};
     flex-direction: column;
     align-items: center;
 

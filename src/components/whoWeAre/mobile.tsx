@@ -8,10 +8,11 @@ import { SectionTitle } from '../common';
 
 const DetailBox = styled.div`
     width: 100vw;
-    height: 440px;
+    height: 100%;
+    min-height: 370px;
     flex-shrink: 0;
 
-    padding: 120px 40px;
+    padding: 80px 40px;
 
     display: flex;
     flex-direction: column;
@@ -43,6 +44,8 @@ const DetailSectionSubTitle = styled.div`
     line-height: 24px;
 
     text-transform: uppercase;
+
+    margin-bottom: -4px;
 `;
 
 const DetailDesc = styled.div`

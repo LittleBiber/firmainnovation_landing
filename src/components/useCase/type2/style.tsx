@@ -18,7 +18,7 @@ export const ContentBox = styled.div<{ $lang: string; $isMobile: boolean }>`
     background: ${hexToRGBA(Colors.gray[200], 0.15)}; // rgba(117, 112, 114, 0.05); // change by request
     backdrop-filter: blur(1px);
 
-    padding: ${({ $isMobile }) => ($isMobile ? '40px 24px' : '64px 40px')};
+    padding: ${({ $isMobile }) => ($isMobile ? '40px 24px 36px' : '64px 40px')};
 
     display: flex;
     flex-direction: column;

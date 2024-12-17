@@ -73,7 +73,7 @@ const AsIsContent = styled(BoxBase)<{ $lang: string; $carousel?: boolean }>`
 
         white-space: pre;
 
-        width: ${({ $carousel }) => ($carousel ? 'fit-content' : '100%')};
+        width: fit-content;
     }
 `;
 

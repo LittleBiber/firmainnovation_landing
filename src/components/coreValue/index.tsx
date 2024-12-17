@@ -13,12 +13,12 @@ const Content = styled.div<{ $isMobile: boolean }>`
     gap: ${({ $isMobile }) => ($isMobile ? '28px' : '56px')};
 `;
 
-const Title = styled.div`
+const Title = styled.div<{ $isMobile: boolean }>`
     color: ${Colors.white};
 
     /* EN/Heading/E) H3 - Bd */
     // font-family: 'Satoshi Variable';
-    font-size: 22px;
+    font-size: ${({ $isMobile }) => ($isMobile ? '20px' : '22px')};
     font-style: normal;
     font-weight: 900;
     line-height: normal;
@@ -114,7 +114,7 @@ const CoreValue = () => {
 
     return (
         <Content $isMobile={isMobile}>
-            <Title>{t('title')}</Title>
+            <Title $isMobile={isMobile}>{t('title')}</Title>
             <ValueList>
                 {list.map((data, index) => (
                     <Card key={`core-value-index-${index}`} $lang={lang}>

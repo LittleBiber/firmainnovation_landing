@@ -14,9 +14,9 @@ const BoxBase = styled.div`
     border-radius: 12px;
 `;
 
-const AsIsContent = styled(BoxBase)<{ $lang: string; $carousel?: boolean }>`
-    width: ${({ $carousel }) => ($carousel ? '100%' : '344px')};
-    padding: ${({ $carousel }) => ($carousel ? '20px 22px' : '24px')};
+const AsIsContent = styled(BoxBase)<{ $lang: string }>`
+    width: 100%;
+    padding: 20px 24px;
     gap: 12px;
 
     border: 1px solid rgba(117, 112, 114, 0.5);
@@ -31,7 +31,7 @@ const AsIsContent = styled(BoxBase)<{ $lang: string; $carousel?: boolean }>`
         width: 100%;
         display: flex;
         flex-direction: column;
-        align-items: ${({ $carousel }) => ($carousel ? 'center' : 'flex-start')};
+        align-items: center;
         gap: 6px;
     }
 
@@ -50,9 +50,9 @@ const AsIsContent = styled(BoxBase)<{ $lang: string; $carousel?: boolean }>`
 
     .tag-box {
         display: flex;
-        justify-content: ${({ $carousel }) => ($carousel ? 'center' : 'flex-start')};
-        align-items: ${({ $carousel }) => ($carousel ? 'center' : 'flex-start')};
-        flex-direction: ${({ $carousel }) => ($carousel ? 'column' : 'row')};
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
         gap: 8px;
         width: 100%;
     }
@@ -73,7 +73,7 @@ const AsIsContent = styled(BoxBase)<{ $lang: string; $carousel?: boolean }>`
 
         white-space: pre;
 
-        width: ${({ $carousel }) => ($carousel ? 'fit-content' : '100%')};
+        width: fit-content;
     }
 `;
 
@@ -82,7 +82,7 @@ const AsIsCarouselBox = (data: AsIsGridData) => {
 
     return (
         <div style={{ width: '100%', padding: '0 20px', display: 'flex' }}>
-            <AsIsContent $lang={lang} $carousel>
+            <AsIsContent $lang={lang}>
                 <div className="title-box">
                     <img src={data.img} alt={data.img} />
                     <div className="title">{data.title}</div>

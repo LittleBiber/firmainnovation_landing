@@ -1,14 +1,12 @@
-import { useMemo } from 'react';
 import Slider, { Settings } from 'react-slick';
 
 import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
 
+import { ReactNode } from 'react';
 import styled from 'styled-components';
 
-import { AsIsGridData, ToBeGridData } from '../../@types';
 import Colors from '../../theme/color';
-import ToBeCarouselBox from '../box/toBeCarouselBox';
 
 const Container = styled.div`
     width: 100%;
@@ -53,32 +51,7 @@ const CustomDots = styled.ul`
     }
 `;
 
-const CarouselSection = ({ variableCards, list }: { variableCards?: boolean; list: AsIsGridData[] | ToBeGridData[] }) => {
-    const responsiveOptions = useMemo(() => {
-        if (variableCards)
-            return [
-                {
-                    breakpoint: 1320,
-                    settings: {
-                        slidesToShow: 2,
-                        slidesToScroll: 2,
-                        infinite: true,
-                        dots: true
-                    }
-                },
-                {
-                    breakpoint: 700,
-                    settings: {
-                        slidesToShow: 1,
-                        slidesToScroll: 1,
-                        infinite: true,
-                        dots: true
-                    }
-                }
-            ];
-        else return undefined;
-    }, [variableCards]);
-
+const Carousel = ({ list }: { list: ReactNode[] }) => {
     const settings: Settings = {
         dots: true,
         arrows: false,
@@ -89,23 +62,18 @@ const CarouselSection = ({ variableCards, list }: { variableCards?: boolean; lis
         slidesToScroll: 1,
         centerPadding: '0',
         customPaging: (i) => <ul style={{ opacity: 0 }}>{i}</ul>,
-        appendDots: (dots: any) => <CustomDots>{dots}</CustomDots>,
-        responsive: responsiveOptions
+        appendDots: (dots: any) => <CustomDots>{dots}</CustomDots>
     };
 
     return (
         <Container>
             <Slider {...settings}>
-                {list.map((data: ToBeGridData) => {
-                    return (
-                        <Slide key={`grid-section-${data.title}`}>
-                            <ToBeCarouselBox {...data} key={`grid-duet-${data.title}`} />
-                        </Slide>
-                    );
+                {list.map((Component, index) => {
+                    return <Slide key={`grid-section-${index}`}>{Component}</Slide>;
                 })}
             </Slider>
         </Container>
     );
 };
 
-export default CarouselSection;
+export default Carousel;

@@ -49,6 +49,13 @@ const TechLogo = () => {
     );
 };
 
+const TechArrow = styled.img`
+    width: 94px;
+    height: 82px;
+
+    margin-top: -47px;
+`;
+
 const Tech = () => {
     const { t } = useTranslation(['Tech']);
     const { lang } = useGlobalContext();
@@ -65,7 +72,7 @@ const Tech = () => {
             <div style={{ height: '80px' }} />
             <div style={{ width: '100%', display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '40px' }}>
                 <AsIsGrid />
-                <img src={pngImages.tech.arrow} alt="arrow" style={{ width: '110px', marginTop: '-60px' }} />
+                <TechArrow src={pngImages.tech.arrow} alt="arrow" />
                 <ToBeGrid />
             </div>
 

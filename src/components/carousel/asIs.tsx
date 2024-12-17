@@ -2,12 +2,13 @@ import { useMemo } from 'react';
 import { useTranslation } from 'react-i18next';
 import styled from 'styled-components';
 
+import Carousel from '.';
 import { AsIsGridData } from '../../@types';
 import pngImages from '../../constant/pngImages';
 import { useGlobalContext } from '../../context/globalContext';
 import Colors from '../../theme/color';
-import { hexToRGBA, parseLineSplit } from '../../util';
-import CarouselSection from './asIsCarousel';
+import { groupIntoPairs, hexToRGBA, parseLineSplit } from '../../util';
+import AsIsCarouselBox from '../box/asIsCarouselBox';
 
 const keys = ['minify', 'efficiency', 'security', 'nego', 'tracking', 'insight'];
 
@@ -18,7 +19,7 @@ const ContentBox = styled.div<{ $variant: 'as-is' | 'to-be' }>`
     display: flex;
     flex-direction: column;
     align-items: center;
-    padding: 42px 0 28px;
+    padding: 44px 0 28px;
     gap: 20px;
     border-radius: 24px;
 
@@ -57,12 +58,10 @@ const AsIsTitle = styled.div`
 const AsIsSubTitle = styled.div<{ $lang: string }>`
     color: ${Colors.gray[300]};
 
-    /* KR/Body/K) Body1 - Rg */
-    // font-family: Pretendard;
-    font-size: 13px;
+    font-size: 14px;
     font-style: normal;
     font-weight: ${({ $lang }) => ($lang === 'ko' ? 600 : 700)};
-    line-height: 18px; /* 150% */
+    line-height: 19px; /* 150% */
 
     text-align: center;
     white-space: pre;
@@ -77,12 +76,24 @@ const AsIsCaurosel = () => {
     const gridTitle = parseLineSplit(t('asIs.title'));
 
     const asIsList = useMemo(() => {
-        return keys.map((key: string) => ({
+        const base = keys.map((key: string) => ({
             img: pngImages.tech[key],
             title: t(`asIs.${key}.title`),
             tags: t(`asIs.${key}.tags`) as unknown as string[]
         }));
-    }, [t]) satisfies AsIsGridData[];
+
+        const duet = groupIntoPairs(base);
+
+        return duet.map((duet: AsIsGridData[]) => {
+            return (
+                <div key={`grid-section-${duet[0].title}`} style={{ width: '100%', display: 'flex', flexDirection: 'column', gap: '16px' }}>
+                    {duet.map((v) => (
+                        <AsIsCarouselBox {...v} key={`grid-duet-${v.title}`} />
+                    ))}
+                </div>
+            );
+        });
+    }, [t]);
 
     return (
         <Wrapper>
@@ -90,7 +101,7 @@ const AsIsCaurosel = () => {
                 <AsIsTitle>AS-IS</AsIsTitle>
 
                 <AsIsSubTitle $lang={lang}>{gridTitle}</AsIsSubTitle>
-                <CarouselSection list={asIsList} />
+                <Carousel list={asIsList} />
             </ContentBox>
         </Wrapper>
     );

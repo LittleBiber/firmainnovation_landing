@@ -10,7 +10,7 @@ import ButtonBase from '../button';
 const Content = styled.div`
     display: flex;
     width: 100%;
-    padding: 32px 52px;
+    padding: 32px 16px; // 52px;
     flex-direction: column;
     justify-content: center;
     align-items: center;
@@ -27,7 +27,7 @@ const CopyRightTypo = styled.div`
 
 const RoutBox = styled.div`
     display: flex;
-    flex-direciton: row;
+    flex-direction: row;
     align-items: center;
     gap: 40px;
 `;
