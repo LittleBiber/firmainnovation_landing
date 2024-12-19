@@ -62,8 +62,3 @@ const useBreakpoint = (): UseBreakpointResult => {
 };
 
 export default useBreakpoint;
-
-// Example usage:
-// const { width, matches } = useBreakpoint({ mobile: 360, tablet: 768, desktop: 1200 });
-// console.log(width); // Current window width
-// console.log(matches); // { mobile: true, tablet: false, desktop: false }

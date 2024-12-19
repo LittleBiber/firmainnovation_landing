@@ -1,7 +1,8 @@
-import { createContext, ReactNode, useContext, useEffect, useState } from 'react';
+import { createContext, ReactNode, useContext, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 
 import useBreakpoint from '../hook/useBreakPoint';
+import { supprotedLangCode } from '../i18n';
 
 // get all return types with ReturnType, and select type of 'matches' property.
 type MatchesType = ReturnType<typeof useBreakpoint>['matches'];
@@ -22,13 +23,6 @@ interface GlobalContextProps {
     isMobile: boolean;
 }
 
-const LOCAL_LANG_KEY = 'lang';
-
-const supportLang: Record<string, boolean> = {
-    ko: true,
-    en: true
-};
-
 const supportTheme: Record<string, boolean> = {
     light: true,
     dark: true
@@ -44,20 +38,17 @@ export const useGlobalContext = () => {
     return context;
 };
 
-const localLang = supportLang[localStorage.getItem(LOCAL_LANG_KEY)] ? localStorage.getItem(LOCAL_LANG_KEY) : 'ko';
-
 export const GlobalProvider = ({ children }: { children: ReactNode }) => {
     const { i18n } = useTranslation();
 
-    const [lang, _setLang] = useState(localLang);
+    const lang = i18n.language;
+
     const [theme, _setTheme] = useState('dark');
 
     const { matches, current } = useBreakpoint();
 
     const setLang = (v: string) => {
-        if (supportLang[v]) {
-            _setLang(v);
-            localStorage.setItem(LOCAL_LANG_KEY, v);
+        if (supprotedLangCode[v]) {
             i18n.changeLanguage(v);
         }
     };
